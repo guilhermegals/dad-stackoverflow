@@ -60,7 +60,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 | ID | Restrição |
 | -- |------------------------------------------------------- |
 | 01 | O projeto deverá ser entregue até o final do semestre |
-| 02 | O Backend será desenvolvido com a tecnologia .NET Core |
+| 02 | O Backend será desenvolvido com a tecnologia Node.JS |
 | 03 | O Frontend WEB será desenvolvido com a tecnologia React |
-| 04 | O Frontend Mobile será desenvolvido com a tecnologia React Native |
-| 05 | Será utilizado SQL Server como banco de dados relacional |
+| 04 | O Frontend Mobile será desenvolvido com a tecnologia Android Nativo |
+| 05 | Será utilizado Mongo.db  como banco de dados não relacional |

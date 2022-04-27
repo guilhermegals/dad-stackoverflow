@@ -70,7 +70,7 @@ Para controle do processo será utilizada a plataforma Azure DevOps juntamente c
 
 As ferramentas empregadas no projeto são:
 
-- Editor de Código: Visual Studio e VS Code
+- Editor de Código: Android Studio e VS Code
 - Ferramentas de comunicação: WhatsApp e Teams
-- Plataforma de gerenciamento de projeto: Azure DevOps
+- Plataforma de gerenciamento de projeto: Github
 - Repositório de código: Github

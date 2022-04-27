@@ -23,8 +23,9 @@
 - A partir da Tela de Login (1) o usário pode efetuar o login e acessar o aplicativo (3) ou então o cadastro (2).
 - A partir da Tela de Cadastro (2) o usuário poderá voltar para a tela de login (1).
 - A partir da Tela principal (3) o usuário poderá acessar suas informações contidas no menu lateral ou sair do aplicativo (4).
-- A partir da Tela principal (3) o usuário poderá acessar a tela de adição de um nova pergunta (5).
-- A partir da Tela principal (3) o usuário poderá acessar a tela de visualização de pergunta (6).
+- A partir da Tela principal (3) o usuário poderá acessar o filtro dos posts pelo botão Filtrar e acessar o filtro (5).
+- A partir da Tela principal (3) o usuário poderá acessar a tela de adição de um nova pergunta (6).
+- A partir da Tela principal (3) o usuário poderá acessar a tela de visualização de pergunta (7).
 - A partir da Tela de visualização de pergunta (6) o usuário poderá acessar a tela de edição de pergunta (7) caso seja de sua autoria.
 
 ## WEB
@@ -42,5 +43,6 @@
 - A primeira tela do usuário é a Tela de Login (1).
 - A partir da Tela de Login (1) o usário pode efetuar o login e acessar o aplicativo (3) ou então o cadastro (2).
 - A partir da Tela de Cadastro (2) o usuário poderá voltar para a tela de login (1).
-- A partir da Tela principal (3) o usuário poderá acessar a tela de visualização de pergunta (4).
-- A partir da Tela de visualização de pergunta (4) o usuário poderá acessar a tela de edição de pergunta (5) caso seja de sua autoria.
+- A partir da Tela principal (3) o usuário poderá acessar a tela de visualização de pergunta (6).
+- A partir da Tela principal (3) o usuário poderá acessar a tela de filtro (5).
+- A partir da Tela de visualização de pergunta (6) o usuário poderá acessar a tela de edição de pergunta (7) caso seja de sua autoria.

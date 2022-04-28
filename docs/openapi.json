@@ -1,0 +1,347 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "garden-backend",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "GetPosts",
+        "operationId": "GetPosts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "GetUsers",
+        "operationId": "GetUsers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/posts/comments/623a9ef59c10550c5c26bfbf": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "PostComment",
+        "operationId": "PostComment",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostCommentRequest"
+              },
+              "example": {
+                "newComment": "que post legal"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/posts": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "PostPosts",
+        "operationId": "PostPosts",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostPostsRequest"
+              },
+              "example": {
+                "title": "Primeira dúvida",
+                "content": "Estou com dúvida",
+                "isActive": true,
+                "createdAt": "2022-03-23",
+                "updatedAt": "",
+                "comments": [
+                  {
+                    "Content": "Teste",
+                    "createdAt": "2022-03-23",
+                    "updatedAt": ""
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/623aaa71a71b0e2bb866690f": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "DeleteUsers",
+        "operationId": "DeleteUsers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/posts/623aa54c0e923331e05cea04": {
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "DeletePosts",
+        "operationId": "DeletePosts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/623aaa440914294794b98142": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "PutUsers",
+        "operationId": "PutUsers",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutUsersRequest"
+              },
+              "example": {
+                "_id": "623aaa440914294794b98142",
+                "Nome": "Ana Paula",
+                "Matricula": "GP002",
+                "Senha": "123456",
+                "__v": 0
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostCommentRequest": {
+        "title": "PostCommentRequest",
+        "required": [
+          "newComment"
+        ],
+        "type": "object",
+        "properties": {
+          "newComment": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "newComment": "que post legal"
+        }
+      },
+      "PostPostsRequest": {
+        "title": "PostPostsRequest",
+        "required": [
+          "title",
+          "content",
+          "isActive",
+          "createdAt",
+          "updatedAt",
+          "comments"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "title": "Primeira dúvida",
+          "content": "Estou com dúvida",
+          "isActive": true,
+          "createdAt": "2022-03-23",
+          "updatedAt": "",
+          "comments": [
+            {
+              "Content": "Teste",
+              "createdAt": "2022-03-23",
+              "updatedAt": ""
+            }
+          ]
+        }
+      },
+      "Comment": {
+        "title": "Comment",
+        "required": [
+          "Content",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "Content": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "Content": "Teste",
+          "createdAt": "2022-03-23",
+          "updatedAt": ""
+        }
+      },
+      "PostUsersRequest": {
+        "title": "PostUsersRequest",
+        "required": [
+          "Nome",
+          "Matricula",
+          "Senha"
+        ],
+        "type": "object",
+        "properties": {
+          "Nome": {
+            "type": "string"
+          },
+          "Matricula": {
+            "type": "string"
+          },
+          "Senha": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "Nome": "Pedro",
+          "Matricula": "GP001",
+          "Senha": "123456"
+        }
+      },
+      "PutUsersRequest": {
+        "title": "PutUsersRequest",
+        "required": [
+          "_id",
+          "Nome",
+          "Matricula",
+          "Senha",
+          "__v"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "Nome": {
+            "type": "string"
+          },
+          "Matricula": {
+            "type": "string"
+          },
+          "Senha": {
+            "type": "string"
+          },
+          "__v": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "_id": "623aaa440914294794b98142",
+          "Nome": "Ana Paula",
+          "Matricula": "GP002",
+          "Senha": "123456",
+          "__v": 0
+        }
+      }
+    }
+  }
+}

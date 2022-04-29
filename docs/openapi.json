@@ -1,346 +1,480 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.0.1",
   "info": {
-    "title": "garden-backend",
-    "contact": {},
-    "version": "1.0"
+    "title": "ClassOverflowWebAPI",
+    "version": "v1"
   },
-  "servers": [
-    {
-      "url": "http://localhost:3000/api/v1",
-      "variables": {}
-    }
-  ],
   "paths": {
-    "/": {
+    "/api/Post": {
       "get": {
         "tags": [
-          "Posts"
+          "Post"
         ],
-        "summary": "GetPosts",
-        "operationId": "GetPosts",
-        "parameters": [],
         "responses": {
           "200": {
-            "description": "",
-            "headers": {}
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/users": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "GetUsers",
-        "operationId": "GetUsers",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/posts/comments/623a9ef59c10550c5c26bfbf": {
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "PostComment",
-        "operationId": "PostComment",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PostCommentRequest"
-              },
-              "example": {
-                "newComment": "que post legal"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/posts": {
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "PostPosts",
-        "operationId": "PostPosts",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PostPostsRequest"
-              },
-              "example": {
-                "title": "Primeira dúvida",
-                "content": "Estou com dúvida",
-                "isActive": true,
-                "createdAt": "2022-03-23",
-                "updatedAt": "",
-                "comments": [
-                  {
-                    "Content": "Teste",
-                    "createdAt": "2022-03-23",
-                    "updatedAt": ""
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post"
                   }
-                ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
               }
             }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
           }
-        },
-        "deprecated": false
-      }
-    },
-    "/users/623aaa71a71b0e2bb866690f": {
-      "delete": {
+        }
+      },
+      "post": {
         "tags": [
-          "Users"
+          "Post"
         ],
-        "summary": "DeleteUsers",
-        "operationId": "DeleteUsers",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            }
           }
         },
-        "deprecated": false
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              }
+            }
+          }
+        }
       }
     },
-    "/posts/623aa54c0e923331e05cea04": {
-      "delete": {
+    "/api/Post/{id}": {
+      "get": {
         "tags": [
-          "Posts"
+          "Post"
         ],
-        "summary": "DeletePosts",
-        "operationId": "DeletePosts",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
-            "headers": {}
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              }
+            }
           }
-        },
-        "deprecated": false
-      }
-    },
-    "/users/623aaa440914294794b98142": {
+        }
+      },
       "put": {
         "tags": [
-          "Users"
+          "Post"
         ],
-        "summary": "PutUsers",
-        "operationId": "PutUsers",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "requestBody": {
-          "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PutUsersRequest"
-              },
-              "example": {
-                "_id": "623aaa440914294794b98142",
-                "Nome": "Ana Paula",
-                "Matricula": "GP002",
-                "Senha": "123456",
-                "__v": 0
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "",
-            "headers": {}
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Post"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/User": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            }
           }
         },
-        "deprecated": false
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/User/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/User/{idPost}/comments": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "idPost",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
-      "PostCommentRequest": {
-        "title": "PostCommentRequest",
-        "required": [
-          "newComment"
-        ],
+      "Comments": {
         "type": "object",
         "properties": {
-          "newComment": {
-            "type": "string"
-          }
-        },
-        "example": {
-          "newComment": "que post legal"
-        }
-      },
-      "PostPostsRequest": {
-        "title": "PostPostsRequest",
-        "required": [
-          "title",
-          "content",
-          "isActive",
-          "createdAt",
-          "updatedAt",
-          "comments"
-        ],
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
           "content": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Post": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
           },
           "isActive": {
             "type": "boolean"
           },
           "createdAt": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "updatedAt": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "comments": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Comment"
+              "$ref": "#/components/schemas/Comments"
             },
-            "description": ""
+            "nullable": true
           }
         },
-        "example": {
-          "title": "Primeira dúvida",
-          "content": "Estou com dúvida",
-          "isActive": true,
-          "createdAt": "2022-03-23",
-          "updatedAt": "",
-          "comments": [
-            {
-              "Content": "Teste",
-              "createdAt": "2022-03-23",
-              "updatedAt": ""
-            }
-          ]
-        }
+        "additionalProperties": false
       },
-      "Comment": {
-        "title": "Comment",
-        "required": [
-          "Content",
-          "createdAt",
-          "updatedAt"
-        ],
+      "User": {
         "type": "object",
         "properties": {
-          "Content": {
-            "type": "string"
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
-          "createdAt": {
-            "type": "string"
+          "nome": {
+            "type": "string",
+            "nullable": true
           },
-          "updatedAt": {
-            "type": "string"
+          "matricula": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
           }
         },
-        "example": {
-          "Content": "Teste",
-          "createdAt": "2022-03-23",
-          "updatedAt": ""
-        }
-      },
-      "PostUsersRequest": {
-        "title": "PostUsersRequest",
-        "required": [
-          "Nome",
-          "Matricula",
-          "Senha"
-        ],
-        "type": "object",
-        "properties": {
-          "Nome": {
-            "type": "string"
-          },
-          "Matricula": {
-            "type": "string"
-          },
-          "Senha": {
-            "type": "string"
-          }
-        },
-        "example": {
-          "Nome": "Pedro",
-          "Matricula": "GP001",
-          "Senha": "123456"
-        }
-      },
-      "PutUsersRequest": {
-        "title": "PutUsersRequest",
-        "required": [
-          "_id",
-          "Nome",
-          "Matricula",
-          "Senha",
-          "__v"
-        ],
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string"
-          },
-          "Nome": {
-            "type": "string"
-          },
-          "Matricula": {
-            "type": "string"
-          },
-          "Senha": {
-            "type": "string"
-          },
-          "__v": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "example": {
-          "_id": "623aaa440914294794b98142",
-          "Nome": "Ana Paula",
-          "Matricula": "GP002",
-          "Senha": "123456",
-          "__v": 0
-        }
+        "additionalProperties": false
       }
     }
   }

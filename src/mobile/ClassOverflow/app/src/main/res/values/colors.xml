@@ -9,6 +9,7 @@
     <color name="color_surface">#fafafa</color>
     <color name="color_background">#FFFFFF</color>
     <color name="color_error">#EE2D55</color>
+    <color name="color_shimmer">#AFACAC</color>
 
     <color name="color_on_primary">#FFFFFF</color>
     <color name="color_on_secondary">#FFFFFF</color>

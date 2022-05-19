@@ -1,7 +1,7 @@
 package br.com.grupo4.classoverflow.data.model
 
-data class Comment(
+data class CommentModel(
     val owner: String = "",
     val content: String = "",
-    val likes: List<Like> = listOf()
+    val likes: List<LikeModel> = listOf()
 )

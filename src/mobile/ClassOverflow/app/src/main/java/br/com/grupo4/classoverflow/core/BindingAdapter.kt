@@ -14,8 +14,8 @@ fun View.goneUnless(visible: Boolean) {
 }
 
 @BindingAdapter("android:textDate")
-fun MaterialTextView.setTextDate(date: LocalDateTime) {
-    this.text = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+fun MaterialTextView.setTextDate(date: LocalDateTime?) {
+    this.text = if (date == null) "" else date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 }
 
 @BindingAdapter("android:textHashtags")

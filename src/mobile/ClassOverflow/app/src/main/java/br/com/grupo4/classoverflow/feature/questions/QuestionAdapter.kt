@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import br.com.grupo4.classoverflow.data.model.Question
+import br.com.grupo4.classoverflow.data.model.QuestionModel
 import br.com.grupo4.classoverflow.databinding.ItemQuestionBinding
 
-class QuestionAdapter(private val onClick: (Question) -> Unit) :
-    ListAdapter<Question, QuestionAdapter.ViewHolder>(QuestionAdapterDiffCallback()) {
+class QuestionAdapter(private val onClick: (QuestionModel) -> Unit) :
+    ListAdapter<QuestionModel, QuestionAdapter.ViewHolder>(QuestionAdapterDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -24,7 +24,7 @@ class QuestionAdapter(private val onClick: (Question) -> Unit) :
     class ViewHolder private constructor(private val binding: ItemQuestionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Question, onClick: (Question) -> Unit) {
+        fun bind(item: QuestionModel, onClick: (QuestionModel) -> Unit) {
             binding.model = item
 
             binding.questionCard.setOnClickListener {
@@ -46,12 +46,12 @@ class QuestionAdapter(private val onClick: (Question) -> Unit) :
     }
 }
 
-class QuestionAdapterDiffCallback : DiffUtil.ItemCallback<Question>() {
-    override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean {
+class QuestionAdapterDiffCallback : DiffUtil.ItemCallback<QuestionModel>() {
+    override fun areItemsTheSame(oldItem: QuestionModel, newItem: QuestionModel): Boolean {
         return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
+    override fun areContentsTheSame(oldItem: QuestionModel, newItem: QuestionModel): Boolean {
         return oldItem == newItem
     }
 }

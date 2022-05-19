@@ -63,7 +63,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@{viewModel.credential}"
+                android:text="@={viewModel.email}"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="@color/primary_text_color" />
 
@@ -73,7 +73,7 @@
             android:id="@+id/login_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/default_margin"
             android:hint="@string/password"
             app:layout_constraintBottom_toTopOf="@id/login_enter"
             app:layout_constraintEnd_toStartOf="@id/guideline_end"
@@ -91,7 +91,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@{viewModel.password}"
+                android:text="@={viewModel.password}"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="@color/primary_text_color" />
 
@@ -101,7 +101,7 @@
             android:id="@+id/login_enter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_margin="24dp"
             android:layout_marginTop="@dimen/default_margin"
             android:onClick="@{() -> viewModel.login()}"
             android:text="@string/enter"
@@ -114,10 +114,24 @@
             app:layout_constraintTop_toBottomOf="@id/login_password"
             app:layout_constraintVertical_chainStyle="packed" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/login_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:goneUnless="@{false}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="@color/color_error"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/login_enter"
+            tools:text="Erro no login" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#55000000"
+            android:background="#99000000"
             android:goneUnless="@{viewModel.isLoading}"
             tools:visibility="gone">
 

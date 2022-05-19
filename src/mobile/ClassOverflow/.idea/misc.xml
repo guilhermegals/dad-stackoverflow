@@ -22,6 +22,14 @@
         <entry key="..\:/Source/puc/ClassOverflow/app/src/main/res/layout/profile_fragment.xml" value="0.3729166666666667" />
         <entry key="..\:/Source/puc/ClassOverflow/app/src/main/res/menu/activity_main_drawer.xml" value="0.38697916666666665" />
         <entry key="..\:/Source/puc/ClassOverflow/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/drawable/ic_launcher_background.xml" value="0.255" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/activity_login.xml" value="0.38697916666666665" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/fragment_question_detail.xml" value="0.2015625" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/fragment_questions.xml" value="0.38697916666666665" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/item_question.xml" value="0.38697916666666665" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/layout/shimmer_item_question.xml" value="0.3859375" />
+        <entry key="..\:/Source/puc/dad-stackoverflow/src/mobile/ClassOverflow/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.255" />
       </map>
     </option>
   </component>

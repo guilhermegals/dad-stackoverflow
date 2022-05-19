@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import br.com.grupo4.classoverflow.R
-import br.com.grupo4.classoverflow.databinding.FragmentProfileBinding
 import br.com.grupo4.classoverflow.databinding.FragmentQuestionDetailBinding
-import br.com.grupo4.classoverflow.feature.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

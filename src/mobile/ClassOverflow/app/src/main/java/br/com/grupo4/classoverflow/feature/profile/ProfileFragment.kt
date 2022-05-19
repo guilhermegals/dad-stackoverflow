@@ -1,12 +1,15 @@
 package br.com.grupo4.classoverflow.feature.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import br.com.grupo4.classoverflow.core.EventObserver
 import br.com.grupo4.classoverflow.databinding.FragmentProfileBinding
+import br.com.grupo4.classoverflow.feature.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +54,15 @@ class ProfileFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner) { user ->
             binding.model = user
         }
+
+        viewModel.logoutEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) openLogin()
+        })
+    }
+
+    private fun openLogin() {
+        startActivity(Intent(requireActivity(), LoginActivity::class.java))
+        requireActivity().finish()
     }
 
     // endregion

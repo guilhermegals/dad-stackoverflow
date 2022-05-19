@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="br.com.grupo4.classoverflow.data.model.Question" />
+            type="br.com.grupo4.classoverflow.data.model.QuestionModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:setLike="@{model.liked}"
-                    app:layout_constraintBottom_toBottomOf="@id/question_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/question_title"
                     tools:srcCompat="@drawable/ic_favorite_active" />

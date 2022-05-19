@@ -3,9 +3,9 @@ package br.com.grupo4.classoverflow.feature.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputType
 import androidx.activity.viewModels
 import br.com.grupo4.classoverflow.core.EventObserver
+import br.com.grupo4.classoverflow.core.goneUnless
 import br.com.grupo4.classoverflow.databinding.ActivityLoginBinding
 import br.com.grupo4.classoverflow.feature.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
 
         setupViews()
         setupObservers()
+
+        viewModel.checkLogin()
     }
 
     // endregion
@@ -47,10 +49,18 @@ class LoginActivity : AppCompatActivity() {
         viewModel.openHomeEvent.observe(this, EventObserver { result ->
             if (result) openHome()
         })
+
+        viewModel.loginErrorEvent.observe(this, EventObserver { message ->
+            if (message.isNotEmpty()) {
+                binding.loginMessage.goneUnless(true)
+                binding.loginMessage.text = message
+            }
+        })
     }
 
     private fun openHome() {
         startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 
     // endregion

@@ -29,15 +29,18 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/default_margin" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/question_detail_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/default_margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="@{() -> viewModel.back()}"
+            android:tint="@color/color_on_background"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="parent"
-            android:tint="@color/color_on_background"
             app:srcCompat="@drawable/ic_arrow_back" />
 
         <com.google.android.material.textview.MaterialTextView

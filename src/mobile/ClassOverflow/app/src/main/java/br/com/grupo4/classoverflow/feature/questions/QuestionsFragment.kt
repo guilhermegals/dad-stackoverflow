@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import br.com.grupo4.classoverflow.R
 import br.com.grupo4.classoverflow.data.model.QuestionModel
 import br.com.grupo4.classoverflow.databinding.FragmentQuestionsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,7 +66,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun openQuestion(question: QuestionModel) {
-
+        findNavController().navigate(R.id.action_navigation_home_to_navigation_question_detail)
     }
 
     // endregion

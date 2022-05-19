@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import br.com.grupo4.classoverflow.R
+import br.com.grupo4.classoverflow.core.EventObserver
 import br.com.grupo4.classoverflow.databinding.FragmentQuestionDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +49,13 @@ class QuestionDetailFragment : Fragment() {
     // region [ Private Functions ]
 
     private fun setupObservers() {
+        viewModel.backEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) openHome()
+        })
+    }
 
+    private fun openHome() {
+        findNavController().navigate(R.id.action_navigation_question_detail_to_navigation_home)
     }
 
     // endregion

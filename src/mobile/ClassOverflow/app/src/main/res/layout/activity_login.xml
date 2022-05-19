@@ -29,6 +29,16 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/default_margin" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="106dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@id/login_credential"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:srcCompat="@drawable/banner_icon" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"

@@ -48,6 +48,7 @@
             android:layout_marginTop="@dimen/default_margin"
             android:goneUnless="@{!viewModel.isLoading}"
             android:nestedScrollingEnabled="false"
+            android:paddingBottom="36dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
@@ -75,7 +76,17 @@
                 android:orientation="vertical">
 
                 <include layout="@layout/shimmer_item_question" />
+
                 <include layout="@layout/shimmer_item_question" />
+
+                <include layout="@layout/shimmer_item_question" />
+
+                <include layout="@layout/shimmer_item_question" />
+
+                <include layout="@layout/shimmer_item_question" />
+
+                <include layout="@layout/shimmer_item_question" />
+
                 <include layout="@layout/shimmer_item_question" />
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>

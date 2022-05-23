@@ -38,7 +38,7 @@ class CommentAdapter(
             onLikeClick: (String, Boolean) -> Unit
         ) {
             val like = item.likes.find { it.ownerEmail == currentUserEmail }
-            val count = item.likes.count { it.isLiked } + item.likes.count { !it.isLiked }
+            val count = item.likes.count { it.isLiked } - item.likes.count { !it.isLiked }
             binding.model = item
             binding.likeCount = count
 

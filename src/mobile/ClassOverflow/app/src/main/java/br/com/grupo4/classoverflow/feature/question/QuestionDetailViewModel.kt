@@ -44,6 +44,9 @@ class QuestionDetailViewModel @Inject constructor(
     private val _isLoadingComment = MutableLiveData(false)
     val isLoadingComment: LiveData<Boolean> = _isLoadingComment
 
+    private val _canEdit = MutableLiveData(false)
+    val canEdit: LiveData<Boolean> = _canEdit
+
     private val _question = MutableLiveData<QuestionModel>()
     val question: LiveData<QuestionModel> = _question
 
@@ -58,6 +61,7 @@ class QuestionDetailViewModel @Inject constructor(
             if (response.success && response.data != null) {
                 response.data.let { question ->
                     _question.postValue(question)
+                    _canEdit.postValue(question.ownerEmail == getCurrentUserEmail())
                 }
 
             } else {

@@ -219,15 +219,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
-                        android:stateListAnimator="@null"
                         android:imeOptions="actionSend"
-                        android:text="@string/comment"
                         android:onClick="@{() -> viewModel.addComment()}"
+                        android:stateListAnimator="@null"
+                        android:text="@string/comment"
                         app:backgroundTint="@color/color_accent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/comment_comment"
-                        app:layout_constraintTop_toBottomOf="@id/comment_comment"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/comment_comment" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -271,5 +271,19 @@
                 android:indeterminateTint="@color/color_primary" />
 
         </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/questions_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:backgroundTint="@color/color_primary"
+            android:contentDescription="@string/add_question"
+            android:goneUnless="@{viewModel.canEdit}"
+            app:fabCustomSize="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_create" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

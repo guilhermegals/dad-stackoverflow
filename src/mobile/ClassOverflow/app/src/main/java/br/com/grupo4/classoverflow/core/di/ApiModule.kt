@@ -14,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -44,6 +45,8 @@ class ApiModule {
 
         return OkHttpClient
             .Builder()
+            .callTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(authInterceptor)
             .addInterceptor(interceptor)
             .build()
@@ -59,7 +62,8 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideQuestion(retrofit: Retrofit): QuestionService = retrofit.create(QuestionService::class.java)
+    fun provideQuestion(retrofit: Retrofit): QuestionService =
+        retrofit.create(QuestionService::class.java)
 
     @Provides
     @Singleton

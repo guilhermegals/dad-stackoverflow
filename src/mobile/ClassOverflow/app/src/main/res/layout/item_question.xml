@@ -40,15 +40,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Título" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/question_like"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:setLike="@{model.liked}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/question_title"
-                    tools:srcCompat="@drawable/ic_favorite_active" />
-
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/question_topics"
                     android:layout_width="wrap_content"
@@ -65,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{model.owner}"
+                    android:text="@{model.ownerName}"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@color/primary_text_color"
                     app:layout_constraintStart_toStartOf="parent"

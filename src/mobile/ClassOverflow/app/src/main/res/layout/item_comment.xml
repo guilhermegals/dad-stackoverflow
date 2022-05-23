@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="br.com.grupo4.classoverflow.data.model.CommentModel" />
+
+        <variable
+            name="likeCount"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/comment_up_like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:hapticFeedbackEnabled="true"
+            app:layout_constraintBottom_toTopOf="@id/comment_like_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/ic_arrow_up"
+            app:tint="@color/color_on_surface" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/comment_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="@color/primary_text_color"
+            android:textInt="@{likeCount}"
+            app:layout_constraintBottom_toTopOf="@id/comment_down_like"
+            app:layout_constraintEnd_toEndOf="@id/comment_up_like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_up_like"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="10" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/comment_down_like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:hapticFeedbackEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="@id/comment_up_like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_like_count"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/ic_arrow_down"
+            app:tint="@color/color_on_surface" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/comment_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{model.content}"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintBottom_toBottomOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/comment_up_like"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum varius erat, dictum lobortis purus vehicula ut. Etiam semper rutrum elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque fermentum maximus leo, eget fringilla nisl malesuada ac." />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="comment_description, comment_down_like" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/comment_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{model.ownerName}"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="@color/primary_text_color"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/comment_description"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
+            tools:text="Usuário 1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/question_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="@color/primary_text_color"
+            android:textDate="@{model.createdAt}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/comment_user"
+            tools:text="12/12/2012" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/comment_description"
+            app:layout_constraintTop_toBottomOf="@id/comment_user" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

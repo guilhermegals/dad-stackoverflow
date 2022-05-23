@@ -2,6 +2,8 @@ package br.com.grupo4.classoverflow.data.repository.implementation
 
 import br.com.grupo4.classoverflow.core.di.DispatcherModule
 import br.com.grupo4.classoverflow.data.api.QuestionService
+import br.com.grupo4.classoverflow.data.model.CommentLikeRequest
+import br.com.grupo4.classoverflow.data.model.CommentRequest
 import br.com.grupo4.classoverflow.data.model.QuestionModel
 import br.com.grupo4.classoverflow.data.model.ResponseModel
 import br.com.grupo4.classoverflow.data.repository.contract.QuestionRepository
@@ -18,6 +20,28 @@ class QuestionRepositoryImpl @Inject constructor(
     override suspend fun getAll(): ResponseModel<List<QuestionModel>> = withContext(dispatcher) {
         return@withContext doRequest {
             service.getAll()
+        }
+    }
+
+    override suspend fun get(id: String): ResponseModel<QuestionModel> = withContext(dispatcher) {
+        return@withContext doRequest {
+            service.get(id)
+        }
+    }
+
+    override suspend fun addComment(id: String, request: CommentRequest): ResponseModel<Any> =
+        withContext(dispatcher) {
+            return@withContext doRequest {
+                service.addComment(id, request)
+            }
+        }
+
+    override suspend fun addCommentLike(
+        id: String,
+        request: CommentLikeRequest
+    ): ResponseModel<Any> = withContext(dispatcher) {
+        return@withContext doRequest {
+            service.addCommentLike(id, request)
         }
     }
 }

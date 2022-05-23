@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.grupo4.classoverflow.data.model.QuestionModel
 import br.com.grupo4.classoverflow.databinding.ItemQuestionBinding
 
-class QuestionAdapter(private val onClick: (QuestionModel) -> Unit) :
-    ListAdapter<QuestionModel, QuestionAdapter.ViewHolder>(QuestionAdapterDiffCallback()) {
+class QuestionAdapter(
+    private val onClick: (String) -> Unit
+) : ListAdapter<QuestionModel, QuestionAdapter.ViewHolder>(QuestionAdapterDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -24,11 +25,11 @@ class QuestionAdapter(private val onClick: (QuestionModel) -> Unit) :
     class ViewHolder private constructor(private val binding: ItemQuestionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: QuestionModel, onClick: (QuestionModel) -> Unit) {
+        fun bind(item: QuestionModel, onClick: (String) -> Unit) {
             binding.model = item
 
             binding.questionCard.setOnClickListener {
-                onClick(item)
+                onClick(item._id)
             }
 
             binding.executePendingBindings()
@@ -48,7 +49,7 @@ class QuestionAdapter(private val onClick: (QuestionModel) -> Unit) :
 
 class QuestionAdapterDiffCallback : DiffUtil.ItemCallback<QuestionModel>() {
     override fun areItemsTheSame(oldItem: QuestionModel, newItem: QuestionModel): Boolean {
-        return oldItem.title == newItem.title
+        return oldItem._id == newItem._id
     }
 
     override fun areContentsTheSame(oldItem: QuestionModel, newItem: QuestionModel): Boolean {

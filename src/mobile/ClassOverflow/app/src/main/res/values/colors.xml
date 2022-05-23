@@ -15,6 +15,7 @@
     <color name="color_on_secondary">#FFFFFF</color>
     <color name="color_on_surface">#40171717</color>
     <color name="color_on_background">#171717</color>
+    <color name="divider">#D4D4DE</color>
 
     <color name="primary_text_color">#171717</color>
     <color name="secondary_text_color">#666666</color>

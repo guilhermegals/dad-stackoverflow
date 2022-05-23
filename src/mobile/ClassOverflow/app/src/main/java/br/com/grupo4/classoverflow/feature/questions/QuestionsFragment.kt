@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.com.grupo4.classoverflow.R
-import br.com.grupo4.classoverflow.data.model.QuestionModel
+import br.com.grupo4.classoverflow.core.EventObserver
 import br.com.grupo4.classoverflow.databinding.FragmentQuestionsBinding
+import br.com.grupo4.classoverflow.feature.question.QuestionDetailFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,10 +65,30 @@ class QuestionsFragment : Fragment() {
         viewModel.questions.observe(viewLifecycleOwner) { questions ->
             adapter.submitList(questions)
         }
+
+        viewModel.errorEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) showGetQuestionsErrorSnackbar()
+        })
     }
 
-    private fun openQuestion(question: QuestionModel) {
-        findNavController().navigate(R.id.action_navigation_home_to_navigation_question_detail)
+    private fun showGetQuestionsErrorSnackbar() {
+        Snackbar.make(
+            requireContext(),
+            binding.root,
+            getString(R.string.questions_cant_load_questions),
+            Snackbar.LENGTH_LONG
+        ).show()
+    }
+
+    private fun openQuestion(id: String) {
+        val bundle = Bundle().apply {
+            putString(QuestionDetailFragment.ARG_QUESTION_ID, id)
+        }
+
+        findNavController().navigate(
+            R.id.action_navigation_home_to_navigation_question_detail,
+            bundle
+        )
     }
 
     // endregion

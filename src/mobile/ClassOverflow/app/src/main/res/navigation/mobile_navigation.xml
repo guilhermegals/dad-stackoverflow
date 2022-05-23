@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_question_detail_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <argument
+            android:name="ARG_QUESTION_ID"
+            app:argType="string" />
     </fragment>
 
 </navigation>

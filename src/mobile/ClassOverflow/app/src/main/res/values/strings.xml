@@ -9,6 +9,13 @@
     <string name="password">Senha</string>
     <string name="login_title">Login</string>
     <string name="enter">Entrar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="question_detail_cant_load">Não foi possível carregar a pergunta.</string>
+    <string name="question_detail_comments_title">Comentários</string>
+    <string name="questions_cant_load_questions">Não foi possível carregar as publicações.</string>
+    <string name="comment_hint">Comentário</string>
+    <string name="comment">Comentar</string>
+    <string name="like_add">Curtida adicionada</string>
+    <string name="like_removed">Curtida removida</string>
+    <string name="like_error">Erro ao curtir</string>
 </resources>

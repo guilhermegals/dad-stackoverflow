@@ -29,6 +29,12 @@ class QuestionRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun delete(id: String): ResponseModel<Any> = withContext(dispatcher) {
+        return@withContext doRequest {
+            service.delete(id)
+        }
+    }
+
     override suspend fun addComment(id: String, request: CommentRequest): ResponseModel<Any> =
         withContext(dispatcher) {
             return@withContext doRequest {

@@ -18,4 +18,14 @@
     <string name="like_add">Curtida adicionada</string>
     <string name="like_removed">Curtida removida</string>
     <string name="like_error">Erro ao curtir</string>
+    <string name="add_question_title">Adicionar pergunta</string>
+    <string name="title">Título</string>
+    <string name="description">Descrição</string>
+    <string name="subject">Disciplina</string>
+    <string name="topics">Tópicos</string>
+    <string name="save">Salvar</string>
+    <string name="delete">Apagar</string>
+    <string name="edit_question_title">Editar pergunta</string>
+    <string name="cant_execut_action">Não foi possível executar a ação.</string>
+    <string name="all_fields_required">Todos os campos são obrigatórios</string>
 </resources>

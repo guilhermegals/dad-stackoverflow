@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -77,7 +78,14 @@ class QuestionsFragment : Fragment() {
             binding.root,
             getString(R.string.questions_cant_load_questions),
             Snackbar.LENGTH_LONG
-        ).show()
+        ).setTextColor(ContextCompat.getColor(requireContext(), R.color.color_on_primary))
+            .setBackgroundTint(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.color_on_background
+                )
+            )
+            .show()
     }
 
     private fun openQuestion(id: String) {

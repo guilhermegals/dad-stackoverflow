@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import br.com.grupo4.classoverflow.R
 import br.com.grupo4.classoverflow.core.EventObserver
 import br.com.grupo4.classoverflow.core.Utils
@@ -79,7 +78,7 @@ class QuestionDetailFragment : Fragment() {
     private fun setupObservers() {
         viewModel.backEvent.observe(viewLifecycleOwner, EventObserver {
             Utils.vibrate(requireContext())
-            if (it) openHome()
+            if (it) back()
         })
 
         viewModel.errorEvent.observe(viewLifecycleOwner, EventObserver {
@@ -121,7 +120,7 @@ class QuestionDetailFragment : Fragment() {
             .addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     super.onDismissed(transientBottomBar, event)
-                    openHome()
+                    back()
                 }
             }).show()
     }
@@ -156,8 +155,8 @@ class QuestionDetailFragment : Fragment() {
             .show()
     }
 
-    private fun openHome() {
-        findNavController().navigate(R.id.action_navigation_question_detail_to_navigation_home)
+    private fun back() {
+        requireActivity().onBackPressed()
     }
 
     // endregion

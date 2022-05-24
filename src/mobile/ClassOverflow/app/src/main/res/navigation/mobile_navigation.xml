@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation2"
+    android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
     <fragment
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_question_detail"
             app:destination="@id/navigation_question_detail" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_add_question"
+            app:destination="@id/navigation_add_question" />
     </fragment>
 
     <fragment
@@ -25,12 +28,20 @@
         android:id="@+id/navigation_question_detail"
         android:name="br.com.grupo4.classoverflow.feature.question.QuestionDetailFragment"
         tools:layout="@layout/fragment_question_detail">
+        <argument
+            android:name="ARG_QUESTION_ID"
+            app:argType="string" />
         <action
-            android:id="@+id/action_navigation_question_detail_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_navigation_question_detail_to_navigation_add_question"
+            app:destination="@id/navigation_add_question" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_question"
+        android:name="br.com.grupo4.classoverflow.feature.addquestion.AddQuestionFragment"
+        tools:layout="@layout/fragment_add_question">
         <argument
             android:name="ARG_QUESTION_ID"
             app:argType="string" />
     </fragment>
-
 </navigation>

@@ -14,6 +14,9 @@ interface QuestionService {
     @GET("v1/posts/{id}")
     suspend fun get(@Path("id") id: String): Response<QuestionModel>
 
+    @DELETE("v1/posts/{id}")
+    suspend fun delete(@Path("id") id: String): Response<Any>
+
     @POST("v1/posts/{id}/comments")
     suspend fun addComment(@Path("id") id: String, @Body request: CommentRequest): Response<Any>
 

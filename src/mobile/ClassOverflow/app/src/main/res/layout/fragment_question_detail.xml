@@ -280,6 +280,7 @@
             android:backgroundTint="@color/color_primary"
             android:contentDescription="@string/add_question"
             android:goneUnless="@{viewModel.canEdit}"
+            android:onClick="@{() -> viewModel.edit()}"
             app:fabCustomSize="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

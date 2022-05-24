@@ -43,5 +43,16 @@
         <argument
             android:name="ARG_QUESTION_ID"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_navigation_add_question_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_add_question_to_navigation_question_detail"
+            app:destination="@id/navigation_question_detail"
+            app:popUpTo="@id/navigation_question_detail"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

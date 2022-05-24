@@ -23,6 +23,9 @@ class QuestionsViewModel @Inject constructor(
     private val _errorEvent = MutableLiveData<EventHandler<Boolean>>()
     val errorEvent: LiveData<EventHandler<Boolean>> get() = _errorEvent
 
+    private val _addEvent = MutableLiveData<EventHandler<Boolean>>()
+    val addEvent: LiveData<EventHandler<Boolean>> get() = _addEvent
+
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -41,5 +44,9 @@ class QuestionsViewModel @Inject constructor(
 
             _isLoading.postValue(false)
         }
+    }
+
+    fun add(){
+        _addEvent.postValue(EventHandler(true))
     }
 }

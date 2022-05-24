@@ -29,6 +29,9 @@ class QuestionDetailViewModel @Inject constructor(
     private val _backEvent = MutableLiveData<EventHandler<Boolean>>()
     val backEvent: LiveData<EventHandler<Boolean>> get() = _backEvent
 
+    private val _editEvent = MutableLiveData<EventHandler<String>>()
+    val editEvent: LiveData<EventHandler<String>> get() = _editEvent
+
     private val _errorEvent = MutableLiveData<EventHandler<Boolean>>()
     val errorEvent: LiveData<EventHandler<Boolean>> get() = _errorEvent
 
@@ -69,6 +72,10 @@ class QuestionDetailViewModel @Inject constructor(
             }
             _isLoading.postValue(false)
         }
+    }
+
+    fun edit(){
+        if(_id.isNotBlank()) _editEvent.postValue(EventHandler(_id))
     }
 
     fun getCurrentUserEmail(): String = sharedPreferencesRepository.getUserInformation().email

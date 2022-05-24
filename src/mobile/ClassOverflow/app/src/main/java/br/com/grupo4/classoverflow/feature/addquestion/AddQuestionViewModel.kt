@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.grupo4.classoverflow.core.EventHandler
 import br.com.grupo4.classoverflow.core.di.DispatcherModule.IoDispatcher
+import br.com.grupo4.classoverflow.data.model.QuestionModel
 import br.com.grupo4.classoverflow.data.repository.contract.QuestionRepository
 import br.com.grupo4.classoverflow.data.repository.implementation.SharedPreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,6 +32,12 @@ class AddQuestionViewModel @Inject constructor(
 
     private val _backEvent = MutableLiveData<EventHandler<Boolean>>()
     val backEvent: LiveData<EventHandler<Boolean>> get() = _backEvent
+
+    private val _closeEvent = MutableLiveData<EventHandler<Boolean>>()
+    val closeEvent: LiveData<EventHandler<Boolean>> get() = _closeEvent
+
+    private val _openQuestionEvent = MutableLiveData<EventHandler<String>>()
+    val openQuestionEvent: LiveData<EventHandler<String>> get() = _openQuestionEvent
 
     private val _errorEvent = MutableLiveData<EventHandler<Boolean>>()
     val errorEvent: LiveData<EventHandler<Boolean>> get() = _errorEvent
@@ -66,7 +73,7 @@ class AddQuestionViewModel @Inject constructor(
     }
 
     fun save() {
-        if(!isValid()){
+        if (!isValid()) {
             _invalidFieldEvent.postValue(EventHandler(true))
             return
         }
@@ -107,11 +114,48 @@ class AddQuestionViewModel @Inject constructor(
     }
 
     private fun addQuestion() {
+        viewModelScope.launch(dispatcher) {
+            _isLoading.postValue(true)
 
+            val response = questionRepository.add(
+                QuestionModel(
+                    title = getTitle(),
+                    content = getDescription(),
+                    subject = getSubject(),
+                    topic = getTopics()
+                )
+            )
+            if (response.success && response.data != null) {
+                _openQuestionEvent.postValue(EventHandler(response.data._id ?: ""))
+            } else {
+                _errorEvent.postValue(EventHandler(true))
+            }
+
+            _isLoading.postValue(false)
+        }
     }
 
     private fun editQuestion(id: String) {
+        viewModelScope.launch(dispatcher) {
+            _isLoading.postValue(true)
 
+            val response = questionRepository.edit(
+                id,
+                QuestionModel(
+                    title = getTitle(),
+                    content = getDescription(),
+                    subject = getSubject(),
+                    topic = getTopics()
+                )
+            )
+            if (response.success && response.data != null) {
+                _openQuestionEvent.postValue(EventHandler(response.data._id ?: ""))
+            } else {
+                _errorEvent.postValue(EventHandler(true))
+            }
+
+            _isLoading.postValue(false)
+        }
     }
 
     private fun deleteQuestion(id: String) {
@@ -120,7 +164,7 @@ class AddQuestionViewModel @Inject constructor(
 
             val response = questionRepository.delete(id)
             if (response.success) {
-                _backEvent.postValue(EventHandler(true))
+                _closeEvent.postValue(EventHandler(true))
             } else {
                 _errorEvent.postValue(EventHandler(true))
             }
@@ -133,13 +177,13 @@ class AddQuestionViewModel @Inject constructor(
         return getTitle().isNotBlank() &&
                 getDescription().isNotBlank() &&
                 getSubject().isNotBlank() &&
-                getTopics().isNotBlank()
+                getTopics().isNotEmpty()
     }
 
     private fun getTitle(): String = title.value ?: ""
     private fun getDescription(): String = description.value ?: ""
     private fun getSubject(): String = subject.value ?: ""
-    private fun getTopics(): String = topics.value ?: ""
+    private fun getTopics(): List<String> = topics.value?.split(" ")?.toList() ?: listOf()
 
     //endregion
 }

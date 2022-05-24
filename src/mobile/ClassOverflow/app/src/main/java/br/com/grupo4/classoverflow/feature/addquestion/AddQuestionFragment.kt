@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.grupo4.classoverflow.R
 import br.com.grupo4.classoverflow.core.EventObserver
+import br.com.grupo4.classoverflow.core.Utils
 import br.com.grupo4.classoverflow.databinding.FragmentAddQuestionBinding
+import br.com.grupo4.classoverflow.feature.question.QuestionDetailFragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,6 +73,14 @@ class AddQuestionFragment : Fragment() {
             if (it) back()
         })
 
+        viewModel.closeEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) close()
+        })
+
+        viewModel.openQuestionEvent.observe(viewLifecycleOwner, EventObserver {
+            openQuestion(it)
+        })
+
         viewModel.errorEvent.observe(viewLifecycleOwner, EventObserver {
             if (it) showErrorSnackbar()
         })
@@ -103,7 +114,7 @@ class AddQuestionFragment : Fragment() {
             ).show()
     }
 
-    private fun showInvalidFieldSnackbar(){
+    private fun showInvalidFieldSnackbar() {
         Snackbar.make(
             requireContext(),
             binding.root,
@@ -116,8 +127,24 @@ class AddQuestionFragment : Fragment() {
         ).show()
     }
 
+    private fun openQuestion(id: String){
+        val bundle = Bundle().apply {
+            putString(QuestionDetailFragment.ARG_QUESTION_ID, id)
+        }
+
+        findNavController().navigate(
+            R.id.action_navigation_add_question_to_navigation_question_detail,
+            bundle
+        )
+    }
+
     private fun back() {
+        Utils.vibrate(requireContext())
         requireActivity().onBackPressed()
+    }
+
+    private fun close() {
+        findNavController().navigate(R.id.action_navigation_add_question_to_navigation_home)
     }
 
     // endregion

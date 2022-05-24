@@ -29,7 +29,7 @@ class QuestionAdapter(
             binding.model = item
 
             binding.questionCard.setOnClickListener {
-                onClick(item._id)
+                item._id?.let { onClick(it) }
             }
 
             binding.executePendingBindings()

@@ -8,6 +8,8 @@ import br.com.grupo4.classoverflow.data.model.ResponseModel
 interface QuestionRepository {
     suspend fun getAll(): ResponseModel<List<QuestionModel>>
     suspend fun get(id: String): ResponseModel<QuestionModel>
+    suspend fun add(model: QuestionModel): ResponseModel<QuestionModel>
+    suspend fun edit(id: String, model: QuestionModel): ResponseModel<QuestionModel>
     suspend fun delete(id: String): ResponseModel<Any>
     suspend fun addComment(id: String, request: CommentRequest): ResponseModel<Any>
     suspend fun addCommentLike(id: String, request: CommentLikeRequest): ResponseModel<Any>

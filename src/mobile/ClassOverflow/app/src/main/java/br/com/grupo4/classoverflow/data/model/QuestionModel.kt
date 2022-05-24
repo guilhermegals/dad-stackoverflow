@@ -1,7 +1,7 @@
 package br.com.grupo4.classoverflow.data.model
 
 data class QuestionModel(
-    val _id: String = "",
+    val _id: String? = null,
     val title: String = "",
     val content: String = "",
     val isActive: Boolean = true,

@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.grupo4.classoverflow.R
 import br.com.grupo4.classoverflow.core.EventObserver
 import br.com.grupo4.classoverflow.core.Utils
 import br.com.grupo4.classoverflow.databinding.FragmentQuestionDetailBinding
+import br.com.grupo4.classoverflow.feature.addquestion.AddQuestionFragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -77,8 +79,11 @@ class QuestionDetailFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.backEvent.observe(viewLifecycleOwner, EventObserver {
-            Utils.vibrate(requireContext())
             if (it) back()
+        })
+
+        viewModel.editEvent.observe(viewLifecycleOwner, EventObserver {
+            openEditQuestion(it)
         })
 
         viewModel.errorEvent.observe(viewLifecycleOwner, EventObserver {
@@ -102,6 +107,19 @@ class QuestionDetailFragment : Fragment() {
     private fun addLike(userEmail: String, liked: Boolean) {
         Utils.vibrate(requireContext())
         viewModel.like(userEmail, liked)
+    }
+
+    private fun openEditQuestion(id: String) {
+        Utils.vibrate(requireContext())
+
+        val bundle = Bundle().apply {
+            putString(AddQuestionFragment.ARG_QUESTION_ID, id)
+        }
+
+        findNavController().navigate(
+            R.id.action_navigation_question_detail_to_navigation_add_question,
+            bundle
+        )
     }
 
     private fun showErrorSnackbar() {
@@ -156,6 +174,7 @@ class QuestionDetailFragment : Fragment() {
     }
 
     private fun back() {
+        Utils.vibrate(requireContext())
         requireActivity().onBackPressed()
     }
 

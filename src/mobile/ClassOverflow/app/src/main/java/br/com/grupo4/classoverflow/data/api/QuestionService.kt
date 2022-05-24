@@ -14,6 +14,12 @@ interface QuestionService {
     @GET("v1/posts/{id}")
     suspend fun get(@Path("id") id: String): Response<QuestionModel>
 
+    @POST("v1/posts/")
+    suspend fun add(@Body request: QuestionModel): Response<QuestionModel>
+
+    @PUT("v1/posts/{id}")
+    suspend fun edit(@Path("id") id: String, @Body request: QuestionModel): Response<QuestionModel>
+
     @DELETE("v1/posts/{id}")
     suspend fun delete(@Path("id") id: String): Response<Any>
 

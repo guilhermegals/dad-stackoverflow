@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
         Utils.vibrate(this@LoginActivity)
 
         val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("https://www.pucminas.br/")
+            data = Uri.parse("http://nevesg-001-site1.dtempurl.com/")
         }
         startActivity(intent)
     }

@@ -44,7 +44,7 @@
 
 # Apresentação
 
-<li><a href="presentation/README.md"> Apresentação da solução</a></li>
+<li><a href="presentation/"> Apresentação da solução</a></li>
 <li><a href="https://puc-garden-backend.herokuapp.com/doc/#/"> Backend</a></li>
 <li><a href="https://the-class-overflow.herokuapp.com/"> Site WEB</a></li>
 <li><a href="https://drive.google.com/file/d/1008e25vQA43v4947l2E_4n9vKhKGohEl/view"> App Android</a></li>

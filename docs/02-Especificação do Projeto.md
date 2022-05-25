@@ -24,6 +24,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 | Aluno | Criar Posts | Tirar dúvidas com monitores e colegas de curso. |
 | Monitor/Aluno | Procurar posts com dúvidas de outros alunos | Tirar dúvidas com monitores e colegas de curso. |
 | Professor | Ver posts de alunos | Descobrir temas com mais dúvidas entre os alunos. |
+| Usuário do sistema | Dar likes em comnetários | Avaliar as melhores respostas. |
 
 ## Requisitos
 
@@ -44,9 +45,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 | ID | Descrição do Requisito | Prioridade |
 | ------- | ------------------------- | ---- |
-|RNF-001| O sistema não será portável para ambientes mobile | BAIXA |
+|RNF-001| O sistema será portável para ambientes mobile | BAIXA |
 |RNF-002| O sistema deve estar integrado a um banco de dados | ALTA |
-|RNF-003| O sistema não deve armazenar dados pessoais do usuário, com exceção do que o mesmo escolher compartilhar em suas threads | ALTA |
+|RNF-003| O sistema não deve armazenar dados pessoais do usuário, com exceção na criação das suas threads | ALTA |
 |RNF-004| O sistema deve possuir uma interface amigável ao usuário | MÉDIA |
 |RNF-005| O usuário deve ter um retorno visual quanto ao carregamento das informações durante o uso | ALTA |
 |RNF-006| O sistema deverá registrar logs a fim de registrar | ALTA |
@@ -61,6 +62,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 | -- |------------------------------------------------------- |
 | 01 | O projeto deverá ser entregue até o final do semestre |
 | 02 | O Backend será desenvolvido com a tecnologia Node.JS |
-| 03 | O Frontend WEB será desenvolvido com a tecnologia React |
+| 03 | O Frontend WEB será desenvolvido com a tecnologia Androi Nativo |
 | 04 | O Frontend Mobile será desenvolvido com a tecnologia Android Nativo |
 | 05 | Será utilizado Mongo.db  como banco de dados não relacional |

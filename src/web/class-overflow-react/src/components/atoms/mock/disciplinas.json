@@ -1,0 +1,24 @@
+{
+  "disciplinas": [
+    {
+      "id": "001",
+      "name": "Programação Web",
+      "topics": ["Teoria das Cores", "Wireframe", "Prototipação", "Racionalismo Técnico", "Reflexão e Ação"]
+    },
+    {
+      "id": "002",
+      "name": "POO",
+      "topics": ["Recursividade", "Pilha", "Lista", "Fila", "Arquivos Binários"]
+    },
+    {
+      "id": "003",
+      "name": "Banco de dados",
+      "topics": ["Teoria das Cores", "Wireframe", "Prototipação", "Racionalismo Técnico", "Reflexão e Ação"]
+    },
+    {
+      "id": "004",
+      "name": "Programação Mobile",
+      "topics": ["Recursividade", "Pilha", "Lista", "Fila", "Arquivos Binários"]
+    }
+  ]
+}

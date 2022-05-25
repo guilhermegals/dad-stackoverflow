@@ -1,10 +1,12 @@
 package br.com.grupo4.classoverflow.feature.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import br.com.grupo4.classoverflow.core.EventObserver
+import br.com.grupo4.classoverflow.core.Utils
 import br.com.grupo4.classoverflow.core.goneUnless
 import br.com.grupo4.classoverflow.databinding.ActivityLoginBinding
 import br.com.grupo4.classoverflow.feature.HomeActivity
@@ -46,6 +48,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        viewModel.openRegisterEvent.observe(this, EventObserver {
+            if (it) openRegister()
+        })
+
         viewModel.openHomeEvent.observe(this, EventObserver { result ->
             if (result) openHome()
         })
@@ -58,8 +64,20 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    private fun openRegister() {
+        Utils.vibrate(this@LoginActivity)
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse("https://www.pucminas.br/")
+        }
+        startActivity(intent)
+    }
+
     private fun openHome() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        Utils.vibrate(this@LoginActivity)
+
+        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+        startActivity(intent)
         finish()
     }
 

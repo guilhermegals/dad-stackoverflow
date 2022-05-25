@@ -25,6 +25,7 @@ class AddQuestionViewModel @Inject constructor(
     //region [ Properties ]
 
     private var _id: String? = null
+    private lateinit var _question: QuestionModel
 
     //endregion
 
@@ -101,6 +102,7 @@ class AddQuestionViewModel @Inject constructor(
             val response = questionRepository.get(id)
             if (response.success && response.data != null) {
                 response.data.let { question ->
+                    _question = question
                     title.postValue(question.title)
                     description.postValue(question.content)
                     subject.postValue(question.subject)
@@ -126,6 +128,7 @@ class AddQuestionViewModel @Inject constructor(
                 )
             )
             if (response.success && response.data != null) {
+                clear()
                 _openQuestionEvent.postValue(EventHandler(response.data._id ?: ""))
             } else {
                 _errorEvent.postValue(EventHandler(true))
@@ -145,10 +148,16 @@ class AddQuestionViewModel @Inject constructor(
                     title = getTitle(),
                     content = getDescription(),
                     subject = getSubject(),
-                    topic = getTopics()
+                    topic = getTopics(),
+                    isActive = _question.isActive,
+                    createdAt = _question.createdAt,
+                    ownerEmail = _question.ownerEmail,
+                    ownerName = _question.ownerName,
+                    comments = _question.comments
                 )
             )
             if (response.success && response.data != null) {
+                clear()
                 _openQuestionEvent.postValue(EventHandler(response.data._id ?: ""))
             } else {
                 _errorEvent.postValue(EventHandler(true))
@@ -171,6 +180,13 @@ class AddQuestionViewModel @Inject constructor(
 
             _isLoading.postValue(false)
         }
+    }
+
+    private fun clear() {
+        title.postValue("")
+        description.postValue("")
+        subject.postValue("")
+        topics.postValue("")
     }
 
     private fun isValid(): Boolean {

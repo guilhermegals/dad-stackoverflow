@@ -28,4 +28,5 @@
     <string name="edit_question_title">Editar pergunta</string>
     <string name="cant_execut_action">Não foi possível executar a ação.</string>
     <string name="all_fields_required">Todos os campos são obrigatórios</string>
+    <string name="register"><U>Registrar</U></string>
 </resources>

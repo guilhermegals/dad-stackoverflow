@@ -28,15 +28,18 @@ class LoginViewModel @Inject constructor(
     private val _openHomeEvent = MutableLiveData<EventHandler<Boolean>>()
     val openHomeEvent: LiveData<EventHandler<Boolean>> get() = _openHomeEvent
 
+    private val _openRegisterEvent = MutableLiveData<EventHandler<Boolean>>()
+    val openRegisterEvent: LiveData<EventHandler<Boolean>> get() = _openRegisterEvent
+
     private val _loginErrorEvent = MutableLiveData<EventHandler<String>>()
     val loginErrorEvent: LiveData<EventHandler<String>> get() = _loginErrorEvent
 
     val email: MutableLiveData<String> = MutableLiveData<String>()
     val password: MutableLiveData<String> = MutableLiveData<String>()
 
-    fun checkLogin(){
+    fun checkLogin() {
         val token = sharedPreferencesRepository.getAccessToken()
-        if(token.isNotEmpty()) _openHomeEvent.postValue(EventHandler(true))
+        if (token.isNotEmpty()) _openHomeEvent.postValue(EventHandler(true))
     }
 
     fun login() {
@@ -50,10 +53,14 @@ class LoginViewModel @Inject constructor(
                 )
             )
 
-            if(response.success) _openHomeEvent.postValue(EventHandler(true))
+            if (response.success) _openHomeEvent.postValue(EventHandler(true))
             else _loginErrorEvent.postValue(EventHandler(response.message))
 
             _isLoading.postValue(false)
         }
+    }
+
+    fun register() {
+        _openRegisterEvent.postValue(EventHandler(true))
     }
 }

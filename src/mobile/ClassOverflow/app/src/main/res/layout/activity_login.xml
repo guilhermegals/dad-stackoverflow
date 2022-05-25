@@ -34,12 +34,28 @@
             android:layout_width="wrap_content"
             android:layout_height="106dp"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@id/login_credential"
+            app:layout_constraintBottom_toTopOf="@id/login_message"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/banner_icon" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/login_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:goneUnless="@{false}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="@color/color_error"
+            app:layout_constraintBottom_toTopOf="@id/login_credential"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/login_banner"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Erro no login" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_credential"
@@ -50,7 +66,7 @@
             app:layout_constraintBottom_toTopOf="@id/login_password"
             app:layout_constraintEnd_toStartOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@id/login_banner"
+            app:layout_constraintTop_toBottomOf="@id/login_message"
             app:layout_constraintVertical_chainStyle="packed"
             app:startIconDrawable="@drawable/ic_credential">
 
@@ -109,25 +125,29 @@
             app:backgroundTint="@color/color_accent"
             app:icon="@drawable/ic_login"
             app:iconGravity="textStart"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/login_register"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/login_password"
             app:layout_constraintVertical_chainStyle="packed" />
 
+
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_message"
-            android:layout_width="0dp"
+            android:id="@+id/login_register"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:goneUnless="@{false}"
+            android:onClick="@{() -> viewModel.register()}"
+            android:text="@string/register"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-            android:textColor="@color/color_error"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/login_enter"
-            tools:text="Erro no login" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <FrameLayout
             android:layout_width="match_parent"

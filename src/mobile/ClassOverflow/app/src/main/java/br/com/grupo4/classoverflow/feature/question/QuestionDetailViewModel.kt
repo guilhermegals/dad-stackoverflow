@@ -74,24 +74,26 @@ class QuestionDetailViewModel @Inject constructor(
         }
     }
 
-    fun edit(){
-        if(_id.isNotBlank()) _editEvent.postValue(EventHandler(_id))
+    fun edit() {
+        if (_id.isNotBlank()) _editEvent.postValue(EventHandler(_id))
     }
 
     fun getCurrentUserEmail(): String = sharedPreferencesRepository.getUserInformation().email
 
     fun addComment() {
         viewModelScope.launch(dispatcher) {
-            _isLoadingComment.postValue(true)
+            comment.value?.let { text ->
+                if (text.isNotBlank()) {
+                    _isLoadingComment.postValue(true)
 
-            comment.value?.let { comment ->
-                questionRepository.addComment(_id, CommentRequest(comment))
+                    questionRepository.addComment(_id, CommentRequest(text))
+
+                    _isLoadingComment.postValue(false)
+                    comment.postValue("")
+
+                    getQuestion(_id)
+                }
             }
-
-            _isLoadingComment.postValue(false)
-            comment.postValue("")
-
-            getQuestion(_id)
         }
     }
 
